@@ -4,7 +4,6 @@ import { ProjectCard } from "../components/ProjectsCard";
 export function ProjectTimeline({ projects }: { projects: Project[] }) {
   return (
     <div className="relative flex flex-col items-center py-10">
-      {/* Vertical Line */}
       <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-1 bg-primary z-0"></div>
       <div className="flex flex-col gap-16 md:gap-24 w-full max-w-5xl z-10">
         {projects.map((project, idx) => (
@@ -14,7 +13,6 @@ export function ProjectTimeline({ projects }: { projects: Project[] }) {
               idx % 2 === 0 ? "justify-start" : "justify-end"
             } hover:scale-[1.02] transition-transform duration-300`}
           >
-            {/* Dot connecting to the vertical line */}
             <div
               className="absolute left-1/2 -translate-x-1/2 z-20"
               style={{ top: "50%" }}

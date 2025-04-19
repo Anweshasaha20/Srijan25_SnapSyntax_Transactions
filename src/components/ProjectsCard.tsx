@@ -1,7 +1,7 @@
 import { Project } from "../types/types";
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 max-w-md">
+    <div className="rounded-lg shadow-md p-4 max-w-md">
       <img
         src={project.imageUrl}
         alt={project.title}
