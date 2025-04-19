@@ -31,7 +31,6 @@ function Home() {
         }}
       ></div>
 
-      {/* Social Links - With smaller icons */}
       <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm p-3 rounded-2xl shadow-xl border border-white/20">
         <div className="flex flex-col space-y-5">
           <h3 className="text-center text-white/80 text-xs font-semibold tracking-widest mb-1 uppercase">
@@ -76,7 +75,6 @@ function Home() {
         </div>
       </div>
 
-      {/* Main content */}
       <div className="container mx-auto px-8 py-12">
         <div className="max-w-5xl mx-auto">
           {/* Profile Section */}
@@ -95,7 +93,7 @@ function Home() {
               <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-4 drop-shadow-lg tracking-tight leading-tight">
                 John Doe
               </h1>
-              <h2 className="text-2xl text-white/90 mb-6 font-medium pl-1 border-l-4 border-white/40 pl-3">
+              <h2 className="text-2xl text-white/90 mb-6 font-medium pl-1 border-l-4 border-white/40 ">
                 Full Stack Developer & UI/UX Enthusiast
               </h2>
               <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-2xl font-light tracking-wide">
@@ -106,7 +104,6 @@ function Home() {
                 intuitive user experiences.
               </p>
 
-              {/* CV Download Button - Now under the text */}
               <a
                 href="/resume.pdf"
                 download
