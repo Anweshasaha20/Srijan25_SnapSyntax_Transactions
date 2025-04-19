@@ -16,7 +16,7 @@ const skills: Skill[] = [
   { name: "Git", level: 75 },
 ];
 
-export default function SkillsPage() {
+export default function Skills() {
   // Split the skills array into two columns
   const mid = Math.ceil(skills.length / 2);
   const leftSkills = skills.slice(0, mid);
