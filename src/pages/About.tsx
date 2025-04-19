@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router";
 
 function About() {
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-10 px-8">
-      <h1 className="text-8xl font-extrabold text-primary-foreground text-center">
+      <h1 className="text-8xl font-extrabold text-secondary-foreground text-center">
         About Me
       </h1>
-      <p className="text-lg max-w-2xl text-primary-foreground text-center">
+      <p className="text-lg max-w-2xl text-secondary-foreground text-center">
         Hi there! I'm a passionate software developer with expertise in modern
         web technologies. I specialize in building responsive, accessible, and
         performant web applications using React, TypeScript, and Next.js. With a
@@ -18,7 +19,9 @@ function About() {
         challenges and opportunities to grow as a developer.
       </p>
       <Button className="mt-6 bg-primary hover:bg-primary/80 text-primary-foreground text-lg px-8 py-3">
-        View My Work
+        <Link to="/projects">
+          View My Projects
+        </Link>
       </Button>
     </div>
   );

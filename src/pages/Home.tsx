@@ -2,11 +2,9 @@ import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 function Home() {
-  // Cursor effect state
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
-  // Handle cursor movement
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -22,7 +20,6 @@ function Home() {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      {/* Custom cursor effect */}
       <div
         className={`fixed w-8 h-8 rounded-full bg-white/30 pointer-events-none transition-transform duration-100 z-50 backdrop-blur-sm ${
           isHovering ? "scale-150" : "scale-100"
@@ -37,8 +34,8 @@ function Home() {
       {/* Social Links - With smaller icons */}
       <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm p-3 rounded-2xl shadow-xl border border-white/20">
         <div className="flex flex-col space-y-5">
-          <h3 className="text-center text-white/80 text-xs font-medium mb-1">
-            CONNECT
+          <h3 className="text-center text-white/80 text-xs font-semibold tracking-widest mb-1 uppercase">
+            Connect
           </h3>
           <a
             href="https://github.com/yourusername"
@@ -95,13 +92,13 @@ function Home() {
               </div>
             </div>
             <div className="lg:w-2/3">
-              <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-lg tracking-tight">
+              <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 mb-4 drop-shadow-lg tracking-tight leading-tight">
                 John Doe
               </h1>
-              <h2 className="text-2xl text-white/90 mb-6 font-medium">
+              <h2 className="text-2xl text-white/90 mb-6 font-medium pl-1 border-l-4 border-white/40 pl-3">
                 Full Stack Developer & UI/UX Enthusiast
               </h2>
-              <p className="text-lg text-white/80 leading-relaxed mb-8">
+              <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-2xl font-light tracking-wide">
                 I craft elegant web solutions with modern technologies. With
                 over 5 years of experience in building responsive, user-centered
                 applications, I specialize in React, Node.js, and cloud
@@ -113,7 +110,7 @@ function Home() {
               <a
                 href="/resume.pdf"
                 download
-                className="bg-white text-primary font-semibold px-10 py-3.5 rounded-lg hover:bg-opacity-90 transition-all inline-flex items-center shadow-lg hover:shadow-xl hover:translate-y-[-2px] cursor-none"
+                className="bg-white text-primary font-bold px-10 py-3.5 rounded-lg hover:bg-opacity-90 transition-all inline-flex items-center shadow-lg hover:shadow-xl hover:translate-y-[-2px] cursor-none tracking-wide text-sm uppercase"
               >
                 Download Resume
                 <svg
