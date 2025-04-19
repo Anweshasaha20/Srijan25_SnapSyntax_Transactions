@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Project } from "../types/types";
 export function ProjectCard({ project }: { project: Project }) {
   return (
