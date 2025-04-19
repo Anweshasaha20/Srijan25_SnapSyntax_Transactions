@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
-import Skills from "./pages/Skills";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
+import Skills from "./pages/skills";
 function App() {
   return (
     <>
