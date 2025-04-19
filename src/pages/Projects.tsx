@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ProjectTimeline } from "../components/ProjectTimeline";
 import { projects } from "../Data/projects-data";
 
