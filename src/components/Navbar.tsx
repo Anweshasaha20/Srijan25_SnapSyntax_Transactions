@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 interface NavItem {
   label: string;
@@ -11,11 +11,11 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const navItems: NavItem[] = [
-    { label: "Home", href: "" },
-    { label: "About", href: "about" },
-    { label: "Projects", href: "projects" },
-    { label: "Skills", href: "skills" },
-    { label: "Contact", href: "contact" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Projects", href: "/projects" },
+    { label: "Skills", href: "/skills" },
+    { label: "Contact", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -31,43 +31,43 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`fixed mt-6 w-[80vw] mx-auto z-50 transition-all duration-300 rounded-4xl ${
-        scrolled ? "bg-background shadow-md py-2" : "bg-background/90 py-4"
+      className={`fixed top-0 left-1/2 -translate-x-1/2 mt-4 w-[85%] mx-auto z-50 transition-all duration-300 rounded-4xl font-sans ${
+        scrolled
+          ? "bg-card/95 shadow-lg shadow-background/20 backdrop-blur-sm py-2"
+          : "bg-background/80 backdrop-blur-sm py-4"
       }`}
     >
-      <div className="container mx-auto px-4 grid grid-cols-3 items-center">
+      <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo or Portfolio Name */}
-        <div className="text-xl font-bold">
-          <Link to="/" className="hover:text-primary/90 transition">
-            <span className="text-primary">John</span>
-            <span className="text-secondary">Doe</span>
+        <div className="text-xl font-bold font-heading">
+          <Link to="/" className="transition duration-300">
+            John Doe
           </Link>
         </div>
 
-        {/* Desktop Navigation - Centered with Vertical Separators */}
-        <nav className="hidden md:flex items-center justify-center">
-          {navItems.map((item, index) => (
-            <React.Fragment key={item.label}>
-              <Link
-                to={item.href}
-                className="text-primary hover:text-primary/80 transition px-4 py-2"
-              >
-                {item.label}
-              </Link>
-              {index < navItems.length - 1 && (
-                <span className="h-5 w-px bg-muted"></span>
-              )}
-            </React.Fragment>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-1 font-medium">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.label}
+              to={item.href}
+              className={({ isActive }) =>
+                `px-4 py-2 rounded-lg transition duration-300 ${
+                  isActive
+                    ? "text-accent font-semibold bg-muted/50"
+                    : "text-foreground hover:text-primary hover:bg-muted/30"
+                }`
+              }
+            >
+              {item.label}
+            </NavLink>
           ))}
         </nav>
 
-        {/* Empty div to maintain grid layout */}
-        <div className="hidden md:block"></div>
-
-        {/* Mobile Menu Button - Align to the right */}
-        <div className="md:hidden col-start-3 flex justify-end">
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
           <button
-            className="focus:outline-none text-primary"
+            className="focus:outline-none focus:ring-2 focus:ring-primary/40 rounded-lg p-1.5 text-foreground hover:text-primary transition"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -108,17 +108,23 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background shadow-lg absolute top-full left-0 right-0 py-3">
-          <div className="container mx-auto px-4 flex flex-col space-y-3">
+        <div className="md:hidden bg-card/95 backdrop-blur-sm shadow-lg shadow-background/20 absolute top-full left-0 right-0 mt-2 py-2 rounded-lg font-medium">
+          <div className="container mx-auto px-4 flex flex-col">
             {navItems.map((item) => (
-              <a
-                href={item.href}
+              <NavLink
+                to={item.href}
                 key={item.label}
-                className="block text-primary hover:text-primary/80 transition py-2"
+                className={({ isActive }) =>
+                  `py-3 px-4 rounded-md my-1 transition-all ${
+                    isActive
+                      ? "bg-muted text-accent font-medium"
+                      : "text-foreground hover:bg-muted/50 hover:text-primary"
+                  }`
+                }
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
           </div>
         </div>

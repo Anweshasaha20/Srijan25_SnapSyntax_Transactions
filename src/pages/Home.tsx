@@ -1,97 +1,137 @@
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 function Home() {
+  // Cursor effect state
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+
+  // Handle cursor movement
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
-    <div className="py-40 min-h-screen bg-gradient-to-b from-primary to-secondary">
-      {/* Main content without explicit navbar and adjusted padding */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Profile Section - Left aligned text but centered container */}
-          <div className="mb-10 text-left lg:flex lg:items-center lg:space-x-8">
-            <div className="lg:w-1/3 flex justify-center lg:justify-start mb-6 lg:mb-0">
-              <img
-                src="https://assets.bitdegree.org/online-learning-platforms/storage/media/2018/08/what-is-a-web-developer.jpg"
-                className="w-36 h-36 rounded-full object-cover border-4 border-primary-foreground shadow-lg"
-              />
+    <div
+      className="py-32 min-h-screen bg-gradient-to-b from-primary to-secondary relative overflow-hidden"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      {/* Custom cursor effect */}
+      <div
+        className={`fixed w-8 h-8 rounded-full bg-white/30 pointer-events-none transition-transform duration-100 z-50 backdrop-blur-sm ${
+          isHovering ? "scale-150" : "scale-100"
+        }`}
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          transform: "translate(-50%, -50%)",
+        }}
+      ></div>
+
+      {/* Social Links - With smaller icons */}
+      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm p-3 rounded-2xl shadow-xl border border-white/20">
+        <div className="flex flex-col space-y-5">
+          <h3 className="text-center text-white/80 text-xs font-medium mb-1">
+            CONNECT
+          </h3>
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary-foreground/20 hover:bg-primary-foreground/30 transition-all p-1.5 rounded-full text-white shadow-md hover:shadow-lg hover:scale-110 group"
+            aria-label="GitHub"
+          >
+            <FaGithub size={18} className="group-hover:animate-pulse" />
+          </a>
+          <a
+            href="https://linkedin.com/in/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary-foreground/20 hover:bg-primary-foreground/30 transition-all p-1.5 rounded-full text-white shadow-md hover:shadow-lg hover:scale-110 group"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin size={18} className="group-hover:animate-pulse" />
+          </a>
+          <a
+            href="https://twitter.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary-foreground/20 hover:bg-primary-foreground/30 transition-all p-1.5 rounded-full text-white shadow-md hover:shadow-lg hover:scale-110 group"
+            aria-label="Twitter"
+          >
+            <FaTwitter size={18} className="group-hover:animate-pulse" />
+          </a>
+          <a
+            href="https://instagram.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary-foreground/20 hover:bg-primary-foreground/30 transition-all p-1.5 rounded-full text-white shadow-md hover:shadow-lg hover:scale-110 group"
+            aria-label="Instagram"
+          >
+            <FaInstagram size={18} className="group-hover:animate-pulse" />
+          </a>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="container mx-auto px-8 py-12">
+        <div className="max-w-5xl mx-auto">
+          {/* Profile Section */}
+          <div className="mb-14 text-left lg:flex lg:items-center lg:space-x-10">
+            <div className="lg:w-1/3 flex justify-center lg:justify-start mb-8 lg:mb-0">
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
+                <img
+                  src="https://assets.bitdegree.org/online-learning-platforms/storage/media/2018/08/what-is-a-web-developer.jpg"
+                  className="relative w-40 h-40 md:w-44 md:h-44 rounded-full object-cover border-2 border-white shadow-xl"
+                  alt="John Doe"
+                />
+              </div>
             </div>
             <div className="lg:w-2/3">
-              <h1 className="text-4xl font-bold text-primary-foreground mb-2">
+              <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-lg tracking-tight">
                 John Doe
               </h1>
-              <h2 className="text-xl text-primary-foreground/90 mb-6">
-                Software Developer
+              <h2 className="text-2xl text-white/90 mb-6 font-medium">
+                Full Stack Developer & UI/UX Enthusiast
               </h2>
-              <p className="text-primary-foreground/80">
-                A passionate developer specializing in web technologies and
-                application development. I create efficient, user-friendly
-                solutions with clean code and modern best practices.
+              <p className="text-lg text-white/80 leading-relaxed mb-8">
+                I craft elegant web solutions with modern technologies. With
+                over 5 years of experience in building responsive, user-centered
+                applications, I specialize in React, Node.js, and cloud
+                infrastructure. Passionate about clean code architecture and
+                intuitive user experiences.
               </p>
-            </div>
-          </div>
 
-          {/* Social Links - Centered */}
-          <div className="flex justify-center space-x-6 mb-10">
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors p-3 rounded-full text-primary-foreground"
-              aria-label="GitHub"
-            >
-              <FaGithub size={24} />
-            </a>
-            <a
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors p-3 rounded-full text-primary-foreground"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin size={24} />
-            </a>
-            <a
-              href="https://twitter.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors p-3 rounded-full text-primary-foreground"
-              aria-label="Twitter"
-            >
-              <FaTwitter size={24} />
-            </a>
-            <a
-              href="https://instagram.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors p-3 rounded-full text-primary-foreground"
-              aria-label="Instagram"
-            >
-              <FaInstagram size={24} />
-            </a>
-          </div>
-
-          {/* CV Download Button - Right aligned */}
-          <div className="flex justify-end">
-            <a
-              href="/resume.pdf"
-              download
-              className="bg-primary-foreground text-primary font-medium px-8 py-3 rounded-lg hover:bg-primary-foreground/90 transition-colors inline-flex items-center shadow-md"
-            >
-              Download CV
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              {/* CV Download Button - Now under the text */}
+              <a
+                href="/resume.pdf"
+                download
+                className="bg-white text-primary font-semibold px-10 py-3.5 rounded-lg hover:bg-opacity-90 transition-all inline-flex items-center shadow-lg hover:shadow-xl hover:translate-y-[-2px] cursor-none"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                Download Resume
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                   strokeWidth={2}
-                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                />
-              </svg>
-            </a>
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
