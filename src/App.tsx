@@ -1,17 +1,18 @@
-import { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router";
-import { Button } from "./components/ui/button";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<div>Portfolio</div>} />
-          <Route path="/count" element={<Button onClick={() => setCount(count + 1)}>Count: {count}</Button>} />
+          <Route path="/about" element={<div>About</div>} />
+          <Route path="/skills" element={<div>Projects</div>} />
+          <Route path="/projects" element={<div>Skills</div>} />
+          <Route path="/contact" element={<div>Contact</div>} />
         </Routes>
       </BrowserRouter>
     </>
