@@ -32,17 +32,14 @@ const Navbar: React.FC = () => {
   return (
     <header
       className={`fixed mt-6 w-[80vw] mx-auto z-50 transition-all duration-300 rounded-4xl ${
-        scrolled ? "bg-primary shadow-md py-2" : "bg-primary py-4"
+        scrolled ? "bg-background shadow-md py-2" : "bg-background/90 py-4"
       }`}
     >
       <div className="container mx-auto px-4 grid grid-cols-3 items-center">
         {/* Logo or Portfolio Name */}
         <div className="text-xl font-bold">
-          <Link
-            to="/"
-            className="text-primary-foreground hover:text-primary-foreground/90 transition"
-          >
-            <span className="text-primary-foreground">John</span>
+          <Link to="/" className="hover:text-primary/90 transition">
+            <span className="text-primary">John</span>
             <span className="text-secondary">Doe</span>
           </Link>
         </div>
@@ -53,7 +50,7 @@ const Navbar: React.FC = () => {
             <React.Fragment key={item.label}>
               <Link
                 to={item.href}
-                className="text-primary-foreground/80 hover:text-primary-foreground transition px-4 py-2"
+                className="text-primary hover:text-primary/80 transition px-4 py-2"
               >
                 {item.label}
               </Link>
@@ -70,7 +67,7 @@ const Navbar: React.FC = () => {
         {/* Mobile Menu Button - Align to the right */}
         <div className="md:hidden col-start-3 flex justify-end">
           <button
-            className="focus:outline-none text-primary-foreground"
+            className="focus:outline-none text-primary"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -111,13 +108,13 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-primary shadow-lg absolute top-full left-0 right-0 py-3">
+        <div className="md:hidden bg-background shadow-lg absolute top-full left-0 right-0 py-3">
           <div className="container mx-auto px-4 flex flex-col space-y-3">
             {navItems.map((item) => (
               <a
                 href={item.href}
                 key={item.label}
-                className="block text-primary-foreground/80 hover:text-primary-foreground transition py-2"
+                className="block text-primary hover:text-primary/80 transition py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}

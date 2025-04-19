@@ -23,7 +23,7 @@ export default function SkillsPage() {
   const rightSkills = skills.slice(mid);
 
   return (
-    <div className="bg-gradient-to-r from-black to-purple-900 text-white min-h-screen">
+    <div className="py-16 bg-gradient-to-b from-primary to-secondary">
       <div className="max-w-3xl mx-auto py-16 px-4">
         <h1 className="text-6xl font-extrabold mb-12 text-center">
           Technical Skills
