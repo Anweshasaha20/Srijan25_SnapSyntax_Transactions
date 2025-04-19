@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import Home from "./pages/Home";
+import Layout from "./pages/Layout";
 function App() {
   return (
     <>
